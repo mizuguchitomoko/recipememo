@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.actions {
+  padding-top:12px;
+}
+.field {
+  margin-bottom: 10px;
+}
