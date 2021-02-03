@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_075620) do
+ActiveRecord::Schema.define(version: 2021_02_03_071215) do
+
+  create_table "recipis", force: :cascade do |t|
+    t.string "recipi_title"
+    t.text "recipi_body"
+    t.string "image_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
