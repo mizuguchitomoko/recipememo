@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_03_071215) do
 
-  create_table "recipis", force: :cascade do |t|
-    t.string "recipi_title"
-    t.text "recipi_body"
+  create_table "recipes", force: :cascade do |t|
+    t.string "recipe_title"
+    t.text "recipe_body"
     t.string "image_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
