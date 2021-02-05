@@ -1,0 +1,15 @@
+<body>
+  <container>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1>レシピ投稿</h1><br>
+          <%= form_with model:@recipe, url:'/recipes', local:true do |f| %>
+            <%= f.attachment_field :image %><br>
+            <%= f.text_field :recipe_title, class:"form-control", placeholder:"料理名" %><br><br>
+            <%= f.text_area :recipe_body, class:"form-control", placeholder:"作業工程をここに" %><br>
+            <%= f.submit "レシピ投稿", class: "btn btn-warning" %>
+          <% end %>
+      </div>
+    </div>
+  </container>
+</body>
