@@ -5,7 +5,8 @@
         <h1>レシピ投稿</h1><br>
           <%= form_with model:@recipe, url:'/recipes', local:true do |f| %>
             <%= f.attachment_field :image %><br>
-            <%= f.text_field :recipe_title, class:"form-control", placeholder:"料理名" %><br><br>
+            <%= f.text_field :recipe_title, class:"form-control", placeholder:"料理名" %><br>
+            <%= f.text_area :recipe_food, class:"form-control", placeholder:"材料をここに" %><br>
             <%= f.text_area :recipe_body, class:"form-control", placeholder:"作業工程をここに" %><br>
             <%= f.submit "レシピ投稿", class: "btn btn-warning" %>
           <% end %>
