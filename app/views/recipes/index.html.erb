@@ -1,0 +1,31 @@
+<body>
+  <container>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <table class="table">
+        <h1>RECIPES</h1>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @recipes.each do |recipe| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= attachment_image_tag recipe, :image, :fill, 150, 100 %>
+              </td>
+              <td>
+                <%= recipe.created_at.strftime('%Y/%m/%d') %>投稿<br>
+                <b><%= recipe.recipe_title %></b><br>
+                <%= recipe.recipe_food %>
+              </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </container>
+</body>

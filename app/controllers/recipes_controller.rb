@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
     #@recipe.user_id = current_user.id
     @recipe.save!
     #redirect_to recipe_path(@recipe)
-    render :"top"
+    render :"index"
   end
 
   def edit
@@ -33,6 +33,6 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:recipe_title, :recipe_body, :image)
+    params.require(:recipe).permit(:recipe_title, :recipe_body, :image, :recipe_food)
   end
 end
