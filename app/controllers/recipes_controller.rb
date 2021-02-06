@@ -4,12 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = Recipe.new
-    @recipes = Recipe.all
-  end
-
-  def show
-    @recipe_new = Recipe.new
-    @recipe = Recipe.find(params[:id])
+    @recipes = Recipe.all.page(params[:page]).per(6)
   end
 
   def new
@@ -21,16 +16,28 @@ class RecipesController < ApplicationController
     #@recipe.user_id = current_user.id
     @recipe.save!
     #redirect_to recipe_path(@recipe)
-    render :"index"
+    redirect_to recipes_path
+  end
+
+  def show
+    @recipe_new = Recipe.new
+    @recipe = Recipe.find(params[:id])
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params)
+    redirect_to recipes_path
   end
 
   def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path
   end
 
   private

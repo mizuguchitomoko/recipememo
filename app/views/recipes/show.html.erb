@@ -2,10 +2,17 @@
   <container>
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
-        <h1 class="recipe-title"><%= @recipe.recipe_title %>のレシピ</h1>
-        <div class="recipe-image"><%= attachment_image_tag @recipe, :image, :fill, 500, 300 %></div>
-        <h4 class="food">材料：<%= @recipe.recipe_food %></h4>
-        <h4 class="recipe-body"><%= @recipe.recipe_body %></h4>
+        <h1 class="recipe-item"><%= @recipe.recipe_title %>のレシピ</h1>
+        <div class="recipe-item"><%= attachment_image_tag @recipe, :image, :fill, 500, 300 %></div>
+        <h4 class="recipe-item">材料：<%= @recipe.recipe_food %></h4>
+        <h4 class="recipe-item"><%= @recipe.recipe_body %></h4>
+        <div class= "recipe-item">
+        <%= link_to "EDIT", edit_recipe_path(@recipe), class:"btn btn-success" %>
+        <%= link_to "DELETE", recipe_path(@recipe), method: :delete, class:"btn btn-warning", "data-confirm" => "本当に削除しますか？" %><br>
+        </div>
+        <div class="recipe-item">
+        <%= link_to "<< BACK", recipes_path %>
+        </div>
       </div>
     </div>
   </container>
