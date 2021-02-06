@@ -1,0 +1,12 @@
+<body>
+  <container>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1 class="recipe-title"><%= @recipe.recipe_title %>のレシピ</h1>
+        <div class="recipe-image"><%= attachment_image_tag @recipe, :image, :fill, 500, 300 %></div>
+        <h4 class="food">材料：<%= @recipe.recipe_food %></h4>
+        <h4 class="recipe-body"><%= @recipe.recipe_body %></h4>
+      </div>
+    </div>
+  </container>
+</body>
