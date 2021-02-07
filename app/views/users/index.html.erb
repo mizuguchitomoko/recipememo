@@ -1,0 +1,35 @@
+<body>
+  <container>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <table class="table">
+        <h1>USERS</h1>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, :size =>'75x75', class: "img-circle pull-left profile-thumb", fallback: "no_image2.jpg" %>
+                <% end %>
+              </td>
+              <td>
+                <h4><%= user.name %></h4>
+              </td>
+              <td>
+                <p><%= user.introduction %></p>
+              </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+        <%= paginate @users %>
+      </div>
+    </div>
+  </container>
+</body>
