@@ -6,4 +6,19 @@ class User < ApplicationRecord
 
   has_many :recipes, dependent: :destroy
   attachment :profile_image
+
+  has_many :follower, class_name: "Relationship", foregin_key: "follower_id", dependent: :destroy#followしている人
+  has_many :followed, class_name: "Relationship", foregin_key: "followed_id", dependent: :destroy#followされている人
+  has_many :following_user, through: :follower, source: :followed#自分がfollowしている人
+  has_many :follower_user, through: :followed, source: :follower#自分をfollowしている人
+
+    # ユーザーをフォローする
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
 end
