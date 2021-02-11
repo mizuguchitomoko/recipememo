@@ -12,13 +12,5 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed#自分がfollowしている人
   has_many :follower_user, through: :followed, source: :follower#自分をfollowしている人
 
-    # ユーザーをフォローする
-  def follow(user_id)
-    follower.create(followed_id: user_id)
-  end
-
-  # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
-  end
+  
 end
