@@ -7,10 +7,13 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   attachment :profile_image
 
-  has_many :follower, class_name: "Relationship", foregin_key: "follower_id", dependent: :destroy#followしている人
-  has_many :followed, class_name: "Relationship", foregin_key: "followed_id", dependent: :destroy#followされている人
-  has_many :following_user, through: :follower, source: :followed#自分がfollowしている人
-  has_many :follower_user, through: :followed, source: :follower#自分をfollowしている人
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :followed_id
+  has_many :followed, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :followed
 
-  
+ def followed_by?(user)
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    passive_relationships.find_by(followed_id: user.id).present?
+ end
 end

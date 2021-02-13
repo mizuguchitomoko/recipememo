@@ -9,7 +9,8 @@
               <th></th>
               <th>Name</th>
               <th>Introduction</th>
-              <th></th>
+              <th>follow</th>
+              <th>follower</th>
             </tr>
           </thead>
           <% @users.each do |user| %>
@@ -26,6 +27,8 @@
               <td>
                 <p><%= user.introduction %></>
               </td>
+              <td><%= user.active_relationships.count %></td>
+              <td><%= user.passive_relationships.count %></td>
               <% end %>
             </tr>
           </tbody>
