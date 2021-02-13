@@ -3,14 +3,13 @@
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
         <table class="table">
-        <h1>USERS</h1>
+        <h1>FOLLOWS</h1>
           <thead>
             <tr>
               <th></th>
               <th>Name</th>
               <th>Introduction</th>
-              <th>follow</th>
-              <th>follower</th>
+              <th></th>
             </tr>
           </thead>
           <% @users.each do |user| %>
@@ -27,8 +26,6 @@
               <td>
                 <p><%= user.introduction %></>
               </td>
-              <td><%= link_to "#{user.active_relationships.count}", follows_user_path(user) %></td>
-              <td><%= link_to "#{user.passive_relationships.count}", followers_user_path(user) %></td>
               <% end %>
             </tr>
           </tbody>
