@@ -11,7 +11,7 @@
         <%= link_to "DELETE", recipe_path(@recipe), method: :delete, class:"btn btn-warning", "data-confirm" => "本当に削除しますか？" %><br>
         </div>
         <div class="recipe-item">
-        <%= link_to "<< BACK", recipes_path %>
+        <%= link_to "<< BACK", user_path(@recipe.user) %>
         </div>
       </div>
     </div>

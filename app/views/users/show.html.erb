@@ -3,7 +3,16 @@
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
         <table class="table">
-        <h1><%= @user.name %>さんのRECIPES</h1>
+        <h1 class="user-name"><%= @user.name %>さんのRECIPES</h1>
+            <div class="btn btn--brue btn--radius">
+              <% if current_user != @user %>
+                <% if @user.followed_by?(current_user) %>
+                  <p><%=link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+                <% else %>
+                  <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+                <% end %>
+              <% end %>
+            </div>
           <thead>
             <tr>
               <th></th>
