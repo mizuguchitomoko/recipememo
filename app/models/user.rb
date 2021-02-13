@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   attachment :profile_image
 
+  has_many :favorites
+
   has_many :active_relationships, class_name: "Relationship", foreign_key: :followed_id
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
