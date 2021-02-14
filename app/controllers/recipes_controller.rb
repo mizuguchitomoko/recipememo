@@ -39,6 +39,15 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def favorites
+    @recipe = Recipe.find(params[:id])
+    @recipes = @recipe.favorites.all.page(params[:page]).per(6)
+    @user = @recipe.user
+    if @user != current_user
+      redirect_to user_path(current_user)
+    end
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:recipe_title, :recipe_body, :image, :recipe_food)

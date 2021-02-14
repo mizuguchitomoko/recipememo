@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'recipes#top'
   resources :recipes do
+    get :favorites, on: :member
     resource :favorites, only: [:create, :destroy]
   end
   resources :users do
