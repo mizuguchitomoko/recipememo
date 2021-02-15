@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :recipes do
     get :favorites, on: :member
     resource :favorites, only: [:create, :destroy]
+    resources :recipe_comments, only: [:create, :destroy]
   end
   resources :users do
     resource :relationships, only: [:create, :destroy]
