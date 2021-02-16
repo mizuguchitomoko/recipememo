@@ -15,6 +15,35 @@
             <%= link_to "DELETE", recipe_path(@recipe), method: :delete, class:"btn btn-warning", "data-confirm" => "本当に削除しますか？" %><br>
           <% end %>
           </div>
+          <h3>コメント</h3>
+          <% @recipe_comments.each do |recipe_comment| %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  <%= link_to user_path(recipe_comment.user) do %>
+                    <%= attachment_image_tag(recipe_comment.user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image2.jpg") %>
+                  <% end %>
+                  </td>
+                  <td>
+                    <h4 class="comment-name"><%= recipe_comment.user.name %></h4>
+                    <i class="far fa-trash-alt"></i>
+                    <p><%= recipe_comment.comment %></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+          <%= form_with(model:[@recipe, @recipe_comment], local: true) do |f| %>
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+          <% end %>
         </div>
       </div>
     </div>
