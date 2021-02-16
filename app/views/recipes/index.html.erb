@@ -12,6 +12,7 @@
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <% @recipes.each do |recipe| %>
@@ -26,6 +27,9 @@
                 <%= recipe.created_at.strftime('%Y/%m/%d') %>投稿<br>
                 <b><%= recipe.recipe_title %></b><br>
                 <%= recipe.recipe_food %>
+              </td>
+              <td>
+                <br><p>コメント：<%= recipe.recipe_comments.count %></p>
               </td>
               <td>
                 <% if user_signed_in? %>
