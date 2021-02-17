@@ -8,7 +8,8 @@ class RecipeCommentsController < ApplicationController
   end
 
   def destroy
-
+    RecipeComment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
+    redirect_to recipe_path(params[:recipe_id])
   end
 
   private
