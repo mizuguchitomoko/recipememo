@@ -16,7 +16,7 @@
           <% end %>
           </div>
           <h3>コメント</h3>
-          <% @recipe_comments.each do |recipe_comment| %>
+          <% @recipe.recipe_comments.each do |recipe_comment| %>
             <table class="table">
               <thead>
                 <tr>
@@ -33,7 +33,11 @@
                   </td>
                   <td>
                     <h4 class="comment-name"><%= recipe_comment.user.name %></h4>
-                    <i class="far fa-trash-alt"></i>
+                    <% if recipe_comment.user == current_user %>
+                      <%= link_to recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete do %>
+                      <i class="far fa-trash-alt"></i>
+                      <% end %>
+                    <% end %>
                     <p><%= recipe_comment.comment %></p>
                   </td>
                 </tr>
