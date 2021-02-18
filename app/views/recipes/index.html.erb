@@ -38,12 +38,10 @@
                   <% else %>
                     <br><p><i class="far fa-heart" style="color: red;"></i><%=link_to recipe.favorites.count, recipe_favorites_path(recipe.id), method: :post %></p>
                   <% end %>
-                <% else %>
-                  <br><p><span>お気に入り数: </span><%= recipe.favorites.count %></p>
                 <% end %>
               </td>
-              <% end %>
             </tr>
+            <% end %>
           </tbody>
         </table>
         <%= paginate @recipes %>

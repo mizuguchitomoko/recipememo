@@ -8,7 +8,7 @@
           <h1 class="recipe-item"><%= @recipe.recipe_title %>のレシピ</h1>
           <div class="recipe-item"><%= attachment_image_tag @recipe, :image, :fill, 500, 300 %></div>
           <h4 class="recipe-item">材料：<%= @recipe.recipe_food %></h4>
-          <h4 class="recipe-item"><%= @recipe.recipe_body %></h4>
+          <h4 class="recipe-item"><%= safe_join(@recipe.recipe_body.split("\n"),tag(:br)) %></h4>
           <div class= "recipe-item">
           <% if @recipe.user.id == current_user.id %>
             <%= link_to "EDIT", edit_recipe_path(@recipe), class:"btn btn-success" %>
