@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get :follows, on: :member # 追加
-    get :followers, on: :member # 追加
+    get :follows, on: :member
+    get :followers, on: :member
   end
 
   devise_for :admins, controllers: {

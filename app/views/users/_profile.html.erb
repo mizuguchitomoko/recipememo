@@ -12,4 +12,6 @@
 	  </tr>
   </thead>
  </table>
- <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+ <% if user == current_user %>
+ 	<%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+<% end %>
