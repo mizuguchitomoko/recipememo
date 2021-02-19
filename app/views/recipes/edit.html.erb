@@ -1,0 +1,29 @@
+<body>
+  <container>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1><%= @recipe.recipe_title %>のレシピ編集</h1><br>
+        <%= form_with model:@recipe, local:true do |f| %>
+          <%= f.label :レシピ画像 %>
+          <%= f.attachment_field :image %><br>
+          <div class="recipe-item">
+          <%= f.label :category, 'カテゴリ' %>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+            <%= category.label do %>
+              <%= category.check_box %>
+              <%= category.text %>
+            <% end %>
+          <% end %>
+          </div>
+          <%= f.label :料理名 %>
+          <%= f.text_field :recipe_title, class:"form-control" %><br>
+          <%= f.label :材料 %>
+          <%= f.text_field :recipe_food, class:"form-control" %><br>
+          <%= f.label :作り方 %>
+          <%= f.text_area :recipe_body, class:"form-control" %><br>
+          <%= f.submit "レシピ編集", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </container>
+</body>

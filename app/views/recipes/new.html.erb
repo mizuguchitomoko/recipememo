@@ -5,8 +5,18 @@
         <h1>レシピ投稿</h1><br>
           <%= form_with model:@recipe, url:'/recipes', local:true do |f| %>
             <%= f.attachment_field :image %><br>
+            <%= f.label :title, '料理名'%>
             <%= f.text_field :recipe_title, class:"form-control", placeholder:"料理名" %><br>
+            <%= f.label :category, 'カテゴリ' %>
+              <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+              <%= category.label do %>
+              <%= category.check_box %>
+              <%= category.text %>
+            <% end %>
+            <% end %><br><br>
+            <%= f.label :body, '材料'%>
             <%= f.text_area :recipe_food, class:"form-control", placeholder:"材料をここに" %><br>
+            <%= f.label :body, '作業工程'%>
             <%= f.text_area :recipe_body, class:"form-control", placeholder:"作業工程をここに" %><br>
             <%= f.submit "レシピ投稿", class: "btn btn-warning" %>
           <% end %>

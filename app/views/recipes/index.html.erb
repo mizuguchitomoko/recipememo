@@ -25,6 +25,11 @@
               </td>
               <td>
                 <%= recipe.created_at.strftime('%Y/%m/%d') %>投稿<br>
+                <% recipe.categories.each do |category| %>
+                <span class="category">
+                  <%= category.category_name %>
+                <% end %>
+                </span><br>
                 <b><%= recipe.recipe_title %></b><br>
                 <%= recipe.recipe_food %>
               </td>
