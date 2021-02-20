@@ -1,0 +1,14 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <%= render 'users/profile', user: current_user %>
+      </div>
+      <div class="col-xs-9">
+      <h1>RECIPES</h1>
+        <%= render 'recipes/recipes', category: @category %>
+        <%= paginate @recipes %>
+      </div>
+    </div>
+  </div>
+</body>
