@@ -1,12 +1,14 @@
 <body>
-  <container>
+  <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
-      <h1>ようこそ、Recipememo<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>へ！</h1>
-        <h3>このサイトは、お客様それぞれのレシピ管理用アプリです。<br>
-        あなただけのレシピ集を作ってみませんか？</h3>
-
+      <center>
+        <h1>ようこそ、Recipememo<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>へ！</h1>
+          <h3>このサイトは、お客様それぞれのレシピ管理用アプリです。<br>
+          あなただけのレシピ集を作ってみませんか？</h3>
+      </center>
+      <div class="img-container">
+        <%= image_tag image_path("sukusyo.png"), class: "recipe-image",alt: "recipe-image" %>
       </div>
     </div>
-  </container>
+  </div>
 </body>
